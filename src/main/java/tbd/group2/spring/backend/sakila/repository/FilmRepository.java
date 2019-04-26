@@ -1,4 +1,8 @@
 package tbd.group2.spring.backend.sakila.repository;
 
-public interface FilmRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import tbd.group2.spring.backend.sakila.entities.Film;
+
+public interface FilmRepository extends JpaRepository<Film, Integer> {
+    Film findFilmByFilmId(Integer id);
 }
