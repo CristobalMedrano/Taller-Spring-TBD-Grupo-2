@@ -3,6 +3,7 @@ package tbd.group2.spring.backend.sakila.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Set;
 
 /**
  * The persistent class for the actor database table.
@@ -30,6 +31,13 @@ public class Actor implements Serializable
     @Column(name="last_update", nullable=false)
     private Timestamp lastUpdate;
 
+    @ManyToMany
+    @JoinTable(
+            name = "film_actor",
+            joinColumns = @JoinColumn(name = "actor_id"),
+            inverseJoinColumns = @JoinColumn(name = "film_id"))
+    Set<Film> actorFilm;
+    
     public Actor() {
     }
 
