@@ -1,8 +1,11 @@
-package tbd.group2.spring.backend.sakila.entities;
+package tbd.group2.spring.backend.sakila.Entities;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -10,7 +13,6 @@ import java.util.Set;
 @Table(name="film")
 public class Film {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="film_id", unique=true, nullable=false)
     private int filmId;
 
@@ -50,16 +52,9 @@ public class Film {
     @Column(name="last_update", nullable=false)
     private Timestamp lastUpdate;
 
-    @ManyToMany(mappedBy = "actorFilm")
-    Set<Actor> filmActor;
-
-    public Set<Actor> getFilmActor() {
-        return filmActor;
-    }
-
-    public void setFilmActor(Set<Actor> filmActor) {
-        this.filmActor = filmActor;
-    }
+    @ManyToMany(mappedBy = "films")
+    @JsonIgnore
+    Set<Actor> actors;
 
     public Film() {
     }
@@ -168,4 +163,12 @@ public class Film {
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
+
+    public Set<Actor> getActors() {
+        return actors;
+    }
+
+    /*public void setActors(Set<Actor> actors) {
+        this.actors = actors;
+    }*/
 }

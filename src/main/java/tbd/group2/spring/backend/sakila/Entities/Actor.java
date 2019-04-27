@@ -1,10 +1,12 @@
 package tbd.group2.spring.backend.sakila.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -33,12 +35,14 @@ public class Actor implements Serializable
     private Timestamp lastUpdate;
 
     @ManyToMany
+    @JsonIgnore
     @JoinTable(
             name = "film_actor",
-            joinColumns = @JoinColumn(name = "actor_id"),
-            inverseJoinColumns = @JoinColumn(name = "film_id"))
-    Set<Film> actorFilm;
-    
+            joinColumns = {@JoinColumn(name = "actor_id")},
+            inverseJoinColumns = {@JoinColumn(name = "film_id")})
+    Set<Film> films;
+
+
     public Actor() {
     }
 
@@ -72,5 +76,13 @@ public class Actor implements Serializable
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public Set<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(Set<Film> films) {
+        this.films = films;
     }
 }

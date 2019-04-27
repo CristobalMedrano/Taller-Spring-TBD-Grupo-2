@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan({"tbd.group2.spring.backend.sakila.Application", "tbd.group2.spring.backend.sakila.rest"})
-@EntityScan("tbd.group2.spring.backend.sakila.entities")
-@EnableJpaRepositories("tbd.group2.spring.backend.sakila.repository")
+@ComponentScan({"tbd.group2.spring.backend.sakila.Application", "tbd.group2.spring.backend.sakila.Rest"})
+@EntityScan("tbd.group2.spring.backend.sakila.Entities")
+@EnableJpaRepositories("tbd.group2.spring.backend.sakila.Repository")
 public class Application {
 
 	public static void main(String[] args) {
