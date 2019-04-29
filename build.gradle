@@ -3,6 +3,10 @@ plugins {
 	id 'java'
 }
 
+springBoot {
+  mainClassName = "tbd.group2.spring.backend.sakila.Application.Application"
+}
+
 apply plugin: 'io.spring.dependency-management'
 
 group = 'tbd.group.2.spring'
